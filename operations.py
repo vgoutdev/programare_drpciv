@@ -1,0 +1,10 @@
+available = dict()
+available['EXAMINARE'] = 1
+available['PRESCHIMBARE_RO'] = 2
+available['TRANSCRIERE'] = 4
+available['INMATRICULARE'] = 8
+available['NUMERE_ROSII'] = 16
+available['RADIERE'] = 32
+available['DUPLICAT_PERMIS'] = 64
+available['DUPLICAT_CERTIFICAT'] = 128
+available['PRESCHIMBARE_STRAIN'] = 256
