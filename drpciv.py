@@ -8,10 +8,12 @@ import operations
 
 class Drpciv():
 
-    def __init__(self, operation = 'INMATRICULARE', county = 'IS' ):
+    def __init__(self, operation = 'vehicleFirstRegistration', county = 'IS' ):
         self.county = self.__get_county(county)
         self.available = operations.available
         self.operation = self.__get_operation(operation)
+        self.operation_desc = operation
+        self.booking = urls.BOOKING_URL
 
     def check_drpciv_earliest_date(self, county: str = None, operation: str = None) -> datetime:
         if operation is None:
@@ -38,7 +40,7 @@ class Drpciv():
     
     def __get_operation(self, operation) -> str:
         if(operation not in self.available):
-            raise Exception("Not available operation")
+            raise Exception("Not an available operation")
         else:
             return self.available[operation]
 
@@ -49,3 +51,6 @@ class Drpciv():
             date = self.check_drpciv_earliest_date(operation['code'],operations[1])
             dict_oper[operation['description']] = str(date)
         return dict_oper
+    
+    def generate_booking_form(self) -> str:
+        return self.booking + '/' + self.county + self.operation_desc
